@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-deployment-xfusion
+  namespace: httpd-namespace-xfusion
+  labels:
+    app: httpd_app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: httpd_app
+  template:
+    metadata:
+      labels:
+        app: httpd_app
+    spec:
+      containers:
+        - name: httpd-container
+          image: httpd:latest
+          ports:
+            - containerPort: 80
