@@ -17,6 +17,13 @@ spec:
       labels:
         app: lamp-wp
     spec:
+      volumes:
+      - name: ini
+        configMap:
+          name: php-config
+          items:
+          - key: php.ini
+            path: php.ini
       containers:
       - image: webdevops/php-apache:alpine-3-php7
         name: httpd-php-container
