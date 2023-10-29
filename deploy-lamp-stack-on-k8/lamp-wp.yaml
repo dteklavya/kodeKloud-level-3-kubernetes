@@ -27,6 +27,32 @@ spec:
       containers:
       - image: webdevops/php-apache:alpine-3-php7
         name: httpd-php-container
+        env: &environment
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db_secret
+              key: MYSQL_ROOT_PASSWORD
+        - name: MYSQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: db_secret
+              key: MYSQL_DATABASE
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: db_secret
+              key: MYSQL_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db_secret
+              key: MYSQL_PASSWORD
+        - name: MYSQL_HOST
+          valueFrom:
+            secretKeyRef:
+              name: db_secret
+              key: MYSQL_HOST
         volumeMounts:
         - name: ini
           mountPath: /opt/docker/etc/php/php.ini
@@ -34,4 +60,5 @@ spec:
         resources: {}
       - image: mysql:5.6
         name: mysql-container
+        env: *environment
 status: {}
