@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    db: mariadb
+  name: iron-db-deployment-nautilus
+  namespace: iron-namespace-nautilus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      db: mariadb
+  template:
+    metadata:
+      labels:
+        db: mariadb
+    spec:
+      volumes:
+      - name: db
+        emptyDir: {}
+      containers:
+      - image: kodekloud/irondb:2.0
+        name: iron-db-container-nautilus
+        env:
+          - name: MYSQL_DATABASE
+            value: database_host
+          - name: MYSQL_ROOT_PASSWORD
+            value: zJ<HqQzX7bj
+          - name: MYSQL_PASSWORD
+            value: kBuJ5*1#J8yN
+          - name: MYSQL_USER
+            value: kodekloud
+        volumeMounts:
+          - name: db
+            mountPath: /var/lib/mysql
