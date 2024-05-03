@@ -1,12 +1,12 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apps/v1 # This changes, depends on Kind on next line
+kind: Deployment # Important!
 metadata:
   name: httpd-deployment-xfusion
-  namespace: httpd-namespace-xfusion
+  namespace: httpd-namespace-xfusion # Important!
   labels:
     app: httpd_app
 spec:
-  replicas: 2
+  replicas: 2 # Number of instance of this object
   selector:
     matchLabels:
       app: httpd_app
@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: httpd-container
-          image: httpd:latest
+          image: httpd:latest # Container image to tun
           ports:
             - containerPort: 80
