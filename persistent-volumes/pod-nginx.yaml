@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-xfusion
+  labels:
+    app: pv-nginx
+spec:
+  volumes:
+    - name: storage-xfusion
+      persistentVolumeClaim: # Mount persistent volume
+        claimName: pvc-xfusion # Claim storage
+  containers:
+    - name: container-xfusion
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: storage-xfusion
+          mountPath:  /usr/share/nginx/html
