@@ -14,7 +14,7 @@ There are some applications that need to be deployed on Kubernetes cluster and t
 4. Main container should be named as `ic-main-nautilus`, use image `fedora`, preferably with `latest` tag and use command `'/bin/bash'`, `'-c'` and `'while true; do cat /ic/official; sleep 5; done'`. The volume mount should be named as `ic-volume-nautilus` and mount path should be `/ic`.
 
 
-5. Volume to be named as `ic-volume-nautilus` and it should be an emptyDir type.
+5. Volume to be named as `ic-volume-nautilus` and it should be an `emptyDir` type.
 
 
 `Note`: The `kubectl` utility on `jump_host` has been configured to work with the kubernetes cluster.

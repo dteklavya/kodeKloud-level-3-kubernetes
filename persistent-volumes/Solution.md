@@ -33,8 +33,8 @@ metadata:
 spec:
   volumes:
     - name: storage-xfusion
-      persistentVolumeClaim:
-        claimName: pvc-xfusion
+      persistentVolumeClaim: # Mount persistent volume
+        claimName: pvc-xfusion # Claim storage
   containers:
     - name: container-xfusion
       image: nginx:latest
@@ -55,4 +55,4 @@ spec:
    ports: 
      - port: 80 
        targetPort: 80 
-       nodePort: 30008
+       nodePort: 30008 # Expose the web server
