@@ -1,8 +1,8 @@
 <?php
-$dbname = 'dbname';
-$dbuser = 'dbuser';
-$dbpass = 'dbpass';
-$dbhost = 'dbhost';
+$dbname = $_ENV["MYSQL_DATABASE"];
+$dbuser = $_ENV["MYSQL_USER"];
+$dbpass = $_ENV["MYSQL_PASSWORD"];
+$dbhost = $_ENV["MYSQL_HOST"];
 
 $connect = mysqli_connect($dbhost, $dbuser, $dbpass) or die("Unable to Connect to '$dbhost'");
 
