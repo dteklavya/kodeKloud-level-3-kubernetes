@@ -4,13 +4,13 @@ kind: Service
 metadata:
   labels:
     app: lemp-wp
-  name: lemp-service
+  name: lemp-service # Important!
 spec:
   ports:
   - port: 80
     protocol: TCP
     targetPort: 80
-    nodePort: 30008
+    nodePort: 30008 # Important!
   selector:
     app: lemp-wp
   type: NodePort

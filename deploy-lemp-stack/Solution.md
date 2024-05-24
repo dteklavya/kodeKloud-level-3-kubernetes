@@ -5,7 +5,7 @@ secret/mysql-root-pass created
 thor@jump_host ~$ 
 thor@jump_host ~$ 
 thor@jump_host ~$ kubectl create secret generic mysql-user-pass \
---from-literal=username=kodekloud_cap
+--from-literal=username=kodekloud_cap --from-literal=password=ksH85UJjhb
 secret/mysql-user-pass created
 thor@jump_host ~$ 
 thor@jump_host ~$ kubectl create secret generic mysql-db-url --from-literal=database=kodekloud_db8
@@ -31,7 +31,7 @@ thor@jump_host ~$
 Create dry deployment spec:
 
 ```
-thor@jump_host ~$ kubectl create deployment lemp-wp --dry-run=client --image=webdevops/php-nginx:alpine-3-php7 -o yaml > lemp-deployment.yaml
+thor@jump_host ~$ kubectl create deployment lemp-wp --dry-run=client \--image=webdevops/php-nginx:alpine-3-php7 -o yaml > lemp-deployment.yaml
 thor@jump_host ~$ 
 thor@jump_host ~$ vi lemp-deployment.yaml
 ```

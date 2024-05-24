@@ -24,7 +24,7 @@ spec:
       containers:
       - image: webdevops/php-nginx:alpine-3-php7
         name: nginx-php-container
-        env: &environment
+        env: &environment # Get values from environment variables
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -50,7 +50,7 @@ spec:
             secretKeyRef:
               name: mysql-host
               key: host
-        volumeMounts:
+        volumeMounts: #  Mount voluumes
         - name: ini
           mountPath: /opt/docker/etc/php/php.ini
           subPath: php.ini
