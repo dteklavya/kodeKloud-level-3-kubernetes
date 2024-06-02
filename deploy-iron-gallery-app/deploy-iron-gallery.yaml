@@ -4,7 +4,7 @@ metadata:
   labels:
     run: iron-gallery
   name: iron-gallery-deployment-devops
-  namespace: iron-namespace-nautilus
+  namespace: iron-namespace-devops
 spec:
   replicas: 1
   selector:

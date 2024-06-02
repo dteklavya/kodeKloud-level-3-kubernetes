@@ -3,8 +3,8 @@ kind: Deployment
 metadata:
   labels:
     db: mariadb
-  name: iron-db-deployment-nautilus
-  namespace: iron-namespace-nautilus
+  name: iron-db-deployment-devops
+  namespace: iron-namespace-devops
 spec:
   replicas: 1
   selector:
@@ -20,7 +20,7 @@ spec:
         emptyDir: {}
       containers:
       - image: kodekloud/irondb:2.0
-        name: iron-db-container-nautilus
+        name: iron-db-container-devops
         env:
           - name: MYSQL_DATABASE
             value: database_host
