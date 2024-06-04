@@ -20,7 +20,7 @@ Describe the pods:
 thor@jump_host ~$ kubectl describe pod python-deployment-datacenter-***
 ```
 
-You'll find the reason why it failed. Image name was incorrect.
+You'll find the reason why it failed. Docker image name was incorrect.
 
 #### Generate YAML config for deployment
 
@@ -44,4 +44,8 @@ Describe service:
 thor@jump_host ~$ kubectl get service -o yaml > service.yaml 
 ```
 
-Edit `service.yaml` and make sure `targetPort` and `nodePort` have desired values. And apply you changes.
+Edit `service.yaml` and make sure `targetPort` and `nodePort` have desired values. And apply the changes.
+
+```
+thor@jump_host ~$ kubectl apply -f service.yaml
+```
