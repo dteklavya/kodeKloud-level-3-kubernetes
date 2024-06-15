@@ -10,7 +10,7 @@ A new MySQL server needs to be deployed on Kubernetes cluster. The Nautilus DevO
 2. Create a PersistentVolumeClaim to request this PersistentVolume storage. Name it as mysql-pv-claim and request a 250Mi of storage. Set other parameters as per your preference.
 
 
-3. Create a deployment named mysql-deployment, use any mysql image as per your preference. Mount the PersistentVolume at mount path /var/lib/mysql.
+3. Create a deployment named `mysql-deployment`, use any mysql image as per your preference. Mount the PersistentVolume at mount path `/var/lib/mysql`.
 
 
 4. Create a NodePort type service named mysql and set nodePort to 30007.
