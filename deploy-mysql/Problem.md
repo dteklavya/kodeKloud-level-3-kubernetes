@@ -16,22 +16,22 @@ A new MySQL server needs to be deployed on Kubernetes cluster. The Nautilus DevO
 4. Create a NodePort type service named mysql and set nodePort to 30007.
 
 
-5. Create a secret named mysql-root-pass having a key pair value, where key is password and its value is YUIidhb667, create another secret named mysql-user-pass having some key pair values, where frist key is username and its value is kodekloud_cap, second key is password and value is ksH85UJjhb, create one more secret named mysql-db-url, key name is database and value is kodekloud_db2
+5. Create a secret named `mysql-root-pass` having a key pair value, where key is `password` and its value is `YUIidhb667`, create another secret named `mysql-user-pass` having some key pair values, where frist key is `username` and its value is `kodekloud_cap`, second key is `password` and value is `ksH85UJjhb`, create one more secret named `mysql-db-url`, key name is `database` and value is `kodekloud_db2`
 
 
 6. Define some Environment variables within the container:
 
 
-      a) name: MYSQL_ROOT_PASSWORD, should pick value from secretKeyRef name: mysql-root-pass and key: password
+      a) name: `MYSQL_ROOT_PASSWORD`, should pick value from `secretKeyRef` name: `mysql-root-pass` and key: `password`
 
 
-      b) name: MYSQL_DATABASE, should pick value from secretKeyRef name: mysql-db-url and key: database
+      b) name: `MYSQL_DATABASE`, should pick value from `secretKeyRef` name: `mysql-db-url` and key: `database`
 
 
-      c) name: MYSQL_USER, should pick value from secretKeyRef name: mysql-user-pass key key: username
+      c) name: `MYSQL_USER`, should pick value from `secretKeyRef` name: `mysql-user-pass` key: `username`
 
 
-      d) name: MYSQL_PASSWORD, should pick value from secretKeyRef name: mysql-user-pass and key: password
+      d) name: `MYSQL_PASSWORD`, should pick value from `secretKeyRef` name: `mysql-user-pass` and key: `password`
 
 
 Note: The kubectl utility on jump_host has been configured to work with the kubernetes cluster.

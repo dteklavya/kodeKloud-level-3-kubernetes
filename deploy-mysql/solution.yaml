@@ -15,9 +15,9 @@ spec:
   persistentVolumeReclaimPolicy: Retain
 ---    
 apiVersion: v1 
-kind: PersistentVolumeClaim
+kind: PersistentVolumeClaim # Important, the type of object
 metadata:                          
-  name: mysql-pv-claim
+  name: mysql-pv-claim # Again, must match with spec
   labels:
     app: mysql-app 
 spec:                              
@@ -26,7 +26,7 @@ spec:
     - ReadWriteOnce             
   resources:
     requests:
-      storage: 250Mi 
+      storage: 250Mi # Spec!
 ---
 apiVersion: v1                    
 kind: Service                      
