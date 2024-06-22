@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-phpfpm
+  labels:
+    app: nginx-phpfpm
+    tier: back-end
+spec:
+  volumes:
+    - name: shared-files
+      emptyDir: {}
+    - name: nginx-config-volume
+      configMap:
+        name: nginx-config
+  containers:
+    - name: nginx-container
+      image: nginx:latest
+      volumeMounts:
+        - name: shared-files
+          mountPath: /var/www/html
+        - name: nginx-config-volume
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+      ports:
+        - containerPort: 8092
+    - name: php-fpm-container
+      image: php:8.2-fpm-alpine
+      volumeMounts:
+        - name: shared-files
+          mountPath: /var/www/html
+      ports:
+        - containerPort: 8092
