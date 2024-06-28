@@ -1,0 +1,42 @@
+apiVersion: v1                    
+kind: Service                      
+metadata:
+  name: drupal-service     
+  labels:             
+    app: drupal-app  
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 80
+      port: 80
+      nodePort: 30095
+  selector:                       
+    app: drupal-app
+    tier: drupal-back-end
+---
+apiVersion: apps/v1 
+kind: Deployment                    
+metadata:
+  name: drupal
+  labels:                         
+    app: drupal-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:                  
+      app: drupal-app 
+      tier: drupal-back-end
+  strategy:
+    type: Recreate 
+  template:         
+    metadata:
+      labels:        
+        app: drupal-app
+        tier: drupal-back-end
+    spec:            
+      containers:
+      - image: drupal:8.6
+        name: drupal
+        ports:
+        - containerPort: 80              
+          name: drupal
