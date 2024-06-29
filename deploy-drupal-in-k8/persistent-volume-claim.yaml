@@ -1,0 +1,13 @@
+apiVersion: v1 
+kind: PersistentVolumeClaim # Important, the type of object
+metadata:                          
+  name: drupal-mysql-pvc # Again, must match with spec
+  labels:
+    app: mysql-app 
+spec:                              
+  storageClassName: standard       
+  accessModes:
+    - ReadWriteOnce             
+  resources:
+    requests:
+      storage: 3Gi # Spec!

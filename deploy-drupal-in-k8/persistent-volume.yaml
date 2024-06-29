@@ -1,0 +1,15 @@
+apiVersion: v1 
+kind: PersistentVolume 
+metadata:
+  name: drupal-mysql-pv # Make sure matches with requirement
+  labels:
+    type: local
+spec:
+  storageClassName: standard       
+  capacity:
+    storage: 5Gi # Important
+  accessModes:
+    - ReadWriteOnce 
+  hostPath:                       
+    path: "/drupal-mysql-data"
+  persistentVolumeReclaimPolicy: Retain
