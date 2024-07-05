@@ -12,6 +12,34 @@ BACK-END TIER
     c.) Request resources as CPU should be 100m and Memory should be 100Mi.
 
     d.) Container port should be redis default port i.e 6379.
+    ```
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+        name: redis-master
+    spec:
+        replicas: 1
+        selector:
+            matchLabels:
+                app: redis-master
+                tier: back-end
+        template:
+            metadata:
+            labels:
+                app: redis-master
+                tier: back-end
+            spec:
+                containers:
+                    - name: master-redis-xfusion
+                    image: redis
+                    resources:
+                        requests:
+                            memory: "100Mi"
+                            cpu: "100m"
+                    ports:
+                        - containerPort: 6379
+
+    ```
 
 2. Create a service named redis-master for Redis master. Port and targetPort should be Redis default port i.e 6379.
 
