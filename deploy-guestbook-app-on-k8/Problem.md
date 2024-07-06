@@ -69,6 +69,36 @@ BACK-END TIER
     d.) Define an environment variable named GET_HOSTS_FROM and its value should be dns.
 
     e.) Container port should be Redis default port i.e 6379.
+    ```
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+        name: redis-slave
+    spec:
+        replicas: 2
+        selector:
+            matchLabels:
+                app: redis-slave
+                tier: back-end
+        template:
+            metadata:
+                labels:
+                    app: redis-slave
+                    tier: back-end
+            spec:
+                containers:
+                    - name: slave-redis-xfusion
+                      image: gcr.io/google_samples/gb-redisslave:v3
+                      resources:
+                        requests:
+                            memory: "100Mi"
+                            cpu: "100m"
+                    env:
+                        - name: GET_HOSTS_FROM
+                        value: dns
+                    ports:
+                        - containerPort: 6379
+    ```
 
 4. Create another service named redis-slave. It should use Redis default port i.e 6379.
 
