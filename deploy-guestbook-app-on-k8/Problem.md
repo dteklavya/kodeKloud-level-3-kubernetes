@@ -101,6 +101,20 @@ BACK-END TIER
     ```
 
 4. Create another service named redis-slave. It should use Redis default port i.e 6379.
+    ```
+    apiVersion: v1
+    kind: Service
+    metadata:
+        name: redis-slave
+    spec:
+        type: ClusterIP
+        selector:
+            app: redis-slave
+            tier: back-end
+        ports:
+            - port: 6379
+            targetPort: 6379
+    ```
 
 FRONT END TIER
 
