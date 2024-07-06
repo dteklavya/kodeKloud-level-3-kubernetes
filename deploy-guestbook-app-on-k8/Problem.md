@@ -42,6 +42,21 @@ BACK-END TIER
     ```
 
 2. Create a service named redis-master for Redis master. Port and targetPort should be Redis default port i.e 6379.
+    ```
+    apiVersion: v1
+    kind: Service
+    metadata:
+        name: redis-master
+    spec:
+        type: ClusterIP
+        selector:
+            app: redis-master
+            tier: back-end
+        ports:
+            - port: 6379
+            targetPort: 6379
+
+    ```
 
 3. Create another deployment named redis-slave for Redis slave.
 
