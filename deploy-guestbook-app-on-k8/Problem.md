@@ -129,6 +129,36 @@ FRONT END TIER
     d.) Define an environment variable named as GET_HOSTS_FROM and its value should be dns.
 
     e.) Container port should be 80.
+    ```
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+        name: frontend
+    spec:
+        replicas: 3
+        selector:
+            matchLabels:
+                app: guestbook
+                tier: front-end
+        template:
+            metadata:
+                labels:
+                    app: guestbook
+                    tier: front-end
+            spec:
+                containers:
+                    - name: php-redis-xfusion
+                      image: gcr.io/google-samples/gb-frontend@sha256:cbc8ef4b0a2d0b95965e0e7dc8938c270ea98e34ec9d60ea64b2d5f2df2dfbbf
+                      resources:
+                        requests:
+                          memory: "100Mi"
+                          cpu: "100m"
+                    env:
+                        - name: GET_HOSTS_FROM
+                          value: dns
+                    ports:
+                        - containerPort: 80
+    ```
 
 2. Create a service named frontend. Its type should be NodePort, port should be 80 and its nodePort should be 30009.
 
