@@ -161,6 +161,22 @@ FRONT END TIER
     ```
 
 2. Create a service named frontend. Its type should be NodePort, port should be 80 and its nodePort should be 30009.
+    ```
+    apiVersion: v1
+    kind: Service
+    metadata:
+        name: frontend
+    spec:
+        type: NodePort
+        selector:
+            app: guestbook
+            tier: front-end
+        ports:
+            - port: 80
+              targetPort: 80
+              nodePort: 30009
+
+    ```
 
 Finally, you can check the guestbook app by clicking on App button.
 
